@@ -54,15 +54,14 @@ with app.app_context():
 
 
 @app.route('/')
+@requires_auth
 def index():
-
     messages = (
         Message.query
         .order_by(Message.timestamp.desc())
         .limit(100)
         .all()
     )
-
     return render_template(
         'index.html',
         messages=messages
