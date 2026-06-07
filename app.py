@@ -55,7 +55,7 @@ with app.app_context():
 
 @app.route('/')
 @requires_auth
-def index():
+def my_secret_index():  # 👈 就是把这里的 index 改成了 my_secret_index
     messages = (
         Message.query
         .order_by(Message.timestamp.desc())
@@ -66,13 +66,6 @@ def index():
         'index.html',
         messages=messages
     )
-
-
-@app.route('/')
-@requires_auth
-def index():
-    return render_template('index.html')
-
 @app.route('/post', methods=['POST'])
 def post():
 
