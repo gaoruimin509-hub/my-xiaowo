@@ -21,24 +21,14 @@ body{
     "幼圆",
     sans-serif;
     
-    background: 
-        /* 左边的大白云朵 */
-        radial-gradient(circle at 15% 25%, #ffffff 0%, #ffffff 12%, transparent 13%),
-        radial-gradient(circle at 22% 28%, #ffffff 0%, #ffffff 15%, transparent 16%),
-        radial-gradient(circle at 28% 26%, #ffffff 0%, #ffffff 10%, transparent 11%),
-        /* 右边的大白云朵 */
-        radial-gradient(circle at 72% 62%, #ffffff 0%, #ffffff 11%, transparent 12%),
-        radial-gradient(circle at 78% 65%, #ffffff 0%, #ffffff 16%, transparent 17%),
-        radial-gradient(circle at 85% 63%, #ffffff 0%, #ffffff 12%, transparent 13%),
-        /* 最底层的奶蓝柔雾粉彩虹渐变 */
-        linear-gradient(135deg, #a2d2ff 0%, #ffcbd5 100%) !important;
-
+    background: linear-gradient(135deg, #a2d2ff 0%, #ffcbd5 100%) !important;
     background-attachment: fixed !important;
 
     margin: 0;
     min-height: 100vh;
+    color: #6d82b3;
+    padding: 0 0 130px;
 }
-
 .header{
 
     text-align:center;
@@ -56,13 +46,12 @@ body{
     color: #5d75a8;
 }
 
-.header p{
+.header p {
+    margin: 5px 0 0;
+    font-size: 16px;
 
-    margin-top:8px;
-
-    color:#b6c6e8;
-
-    font-size:14px;
+    color: #5d75a8 !important; 
+    font-weight: 500; 
 }
 
 .container{
@@ -259,7 +248,7 @@ input::placeholder{
 
     <h1>☁️ 小窝 ☁️</h1>
 
-    <p>把想说的话轻轻放在这里</p>
+    <p>(′・ω・`)专心经营萌萌の糖氏生活</p>
 
 </div>
 
@@ -303,7 +292,7 @@ input::placeholder{
         type="text"
         id="content"
         maxlength="500"
-        placeholder="写下今天的小心情吧...">
+        placeholder="今天也要爱我哦~">
 
     <button
         class="send-btn"
