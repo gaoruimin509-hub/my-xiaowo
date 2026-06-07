@@ -4,6 +4,26 @@ from datetime import datetime
 
 app = Flask(__name__)
 
+from flask import request, Response
+from functools import wraps
+
+def check_auth(username, password):
+    return username == 'GG' and password == '0627'
+
+def requires_auth(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        import os
+        if os.environ.get('IS_PRIVATE') == 'true':
+            auth = request.authorization
+            if not auth or not check_auth(auth.username, auth.password):
+                return Response(
+                    '需要密码才能进入哦！', 401,
+                    {'WWW-Authenticate': 'Basic realm="Login Required"'}
+                )
+        return f(*args, **kwargs)
+    return decorated
+    
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -48,6 +68,11 @@ def index():
         messages=messages
     )
 
+
+@app.route('/')
+@requires_auth
+def index():
+    return render_template('index.html')
 
 @app.route('/post', methods=['POST'])
 def post():
